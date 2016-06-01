@@ -6,7 +6,12 @@ button.watch(function (err, value) {
   if (err) {
     throw err;
   }
-  console.log("button pressed with value: ", value);
+
+  if (value) {
+    console.log("button pressed");
+  } else {
+    console.log("button released");
+  }
   led.writeSync(value);
 });
 
