@@ -1,16 +1,17 @@
-var Gpio = require('onoff').Gpio,
-  led = new Gpio(14, 'out'),
-  button = new Gpio(4, 'in', 'both');
+var Gpio = require('onoff').Gpio;
+var led = new Gpio(14, 'out');
+var button = new Gpio(4, 'in', 'both');
 
-button.watch(function (err, value) {
-  if (err) {
-    throw err;
-  }
+console.log("started");
+//button.watch(function (err, value) {
+  //if (err) {
+    //throw err;
+  //}
 
-  led.writeSync(value);
-});
+  //led.writeSync(value);
+//});
 
-process.on('SIGINT', function () {
-  led.unexport();
-  button.unexport();
-});
+//process.on('SIGINT', function () {
+  //led.unexport();
+  //button.unexport();
+//});
