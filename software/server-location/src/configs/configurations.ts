@@ -5,7 +5,7 @@ import {IRepositoryConfig,IServerConfig} from "./interfaces"
      public static get Repository():IRepositoryConfig 
      { 
          return {
-             connectionString: "mongodb://localhost/taskdb"
+             connectionString: "mongodb://localhost/locationdb"
          }
      }
      

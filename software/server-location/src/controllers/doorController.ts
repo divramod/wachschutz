@@ -5,6 +5,7 @@ import * as Joi from "joi";
 import BaseController from './baseController';
 import * as DoorModel from '../models/doorModel';
 import { IDoor, IDoorRepository } from '../libs/repository/interfaces'
+var Gpio = require('onoff').Gpio;
 
 export default class doorController extends BaseController {
   private doorRepository: IDoorRepository;
@@ -13,22 +14,50 @@ export default class doorController extends BaseController {
     super(server);
     this.doorRepository = doorRepository;
     console.log("door controller");
-    server.app.button.watch(function (err, value) {
-      if (err) {
-        throw err;
-      }
+    this.createDoorWatchers(server);
+  }
 
-      if (value) {
-        console.log("button pressed");
-      } else {
-        console.log("button released");
-      }
-      server.app.led.writeSync(value);
-    });
+  private createDoorWatchers(server) {
+    this.doorRepository.find({}, 0, 0).then((doors: Array<IDoor>) => {
+      for (let i = 0, len = doors.length; i < len; i++) {
+        let door = doors[i];
+        console.log(door);
+        let ledPin = parseInt(door.name) + 10;
+        let buttonPin = parseInt(door.name);
+        //console.log("ledPin ", ledPin );
+        //console.log("buttonPin ", buttonPin );
+        try {
+          // create led/button pairs
+          server.app.leds[ledPin] = new Gpio(ledPin, 'out');
+          server.app.buttons[buttonPin] = new Gpio(buttonPin, 'in', 'both');
 
-    process.on('SIGINT', function () {
-      server.app.led.unexport();
-      server.app.button.unexport();
+          // create watcher
+          server.app.buttons[buttonPin].watch(function (err, value) {
+            if (err) {
+              throw err;
+            }
+
+            if (value) {
+              console.log("button " + buttonPin + " pressed");
+            } else {
+              console.log("button " + buttonPin + " released");
+            }
+            server.app.leds[ledPin].writeSync(value);
+          });
+
+          // create unexport
+          process.on('SIGINT', function () {
+            server.app.leds[ledPin].unexport();
+            server.app.buttons[buttonPin].unexport();
+          });
+
+        } catch (e) {
+          console.log("no gpio");
+        }
+
+      }
+    }).catch((error) => {
+      console.log("problem: ", error);
     });
   }
 

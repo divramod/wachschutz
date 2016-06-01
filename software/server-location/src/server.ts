@@ -10,15 +10,8 @@ const path = require('path');
 var port = process.env.port || Configurations.Server.port;
 var server = new Hapi.Server();
 
-var Gpio = require('onoff').Gpio;
 
 server.connection({ port: port });
-try {
-  server.app.led = new Gpio(14, 'out');
-  server.app.button = new Gpio(4, 'in', 'both');
-} catch (e) {
-  console.log("no gpio");
-}
 
 //  Setup Hapi Plugins
 const pluginsPath = __dirname + '/libs/plugins/';
