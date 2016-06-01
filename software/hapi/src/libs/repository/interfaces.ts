@@ -5,13 +5,6 @@ export interface IEntity {
     updatedAt: Date;
 }
 
-export interface ITask extends IEntity {
-    name: string;
-    description: string;
-    completed: boolean;
-}
-
-
 export interface IRepository<T extends IEntity> {
     findById(id: string): Promise<T>;
     findByIdAndDelete(id: string): Promise<T>;
@@ -20,6 +13,28 @@ export interface IRepository<T extends IEntity> {
     create(entity: T): Promise<T>; 
 }
 
+// ========================== [ Entities ] ==========================
+export interface ITask extends IEntity {
+    name: string;
+    description: string;
+    completed: boolean;
+}
+
+
+export interface IDoor extends IEntity {
+    name: string;
+    description: string;
+    completed: boolean;
+    opened: boolean;
+}
+
+
+// ========================== [ Interfaces ] ==========================
+
 export interface ITaskRepository extends IRepository<ITask> {
+
+}
+
+export interface IDoorRepository extends IRepository<ITask> {
 
 }
