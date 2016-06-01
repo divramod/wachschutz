@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/divramod/wachschutz/issues"
   },
-  "homepage": "https://github.com/divramod/wachschutz#readme"
+  "homepage": "https://github.com/divramod/wachschutz#readme",
+  "dependencies": {
+    "onoff": "^1.1.0"
+  }
 }
