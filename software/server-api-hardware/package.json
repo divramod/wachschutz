@@ -1,0 +1,22 @@
+{
+  "name": "wachschutz-api-hardware",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divramod/wachschutz.git"
+  },
+  "keywords": [
+    "raspberry-pi"
+  ],
+  "author": "Arvid Petermann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/divramod/wachschutz/issues"
+  },
+  "homepage": "https://github.com/divramod/wachschutz#readme"
+}
