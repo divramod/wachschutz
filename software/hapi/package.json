@@ -14,7 +14,12 @@
     "nodejs"
   ],
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "gulp nodemon",
+    "build": "gulp build",
+    "tslint": "gulp tslint",
+    "postinstall": "npm run typings-install",
+    "typings-install": "typings install"
   },
   "dependencies": {
     "boom": "^3.0.0",

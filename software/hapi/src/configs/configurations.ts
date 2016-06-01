@@ -12,7 +12,7 @@ import {IRepositoryConfig,IServerConfig} from "./interfaces"
      public static get Server():IServerConfig 
      { 
          return {
-             port: 3000
+             port: 8100
          }
      }
 }
