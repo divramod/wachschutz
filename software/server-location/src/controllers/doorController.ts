@@ -57,7 +57,7 @@ export default class doorController extends BaseController {
 
       }
     }).catch((error) => {
-      console.log("problem: ", error);
+      console.log("problem mongo error: ", error);
     });
   }
 
