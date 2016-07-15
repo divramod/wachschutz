@@ -33,3 +33,8 @@ A website that shows all the information.
 
 ### wordpress (todo, @hoktaar)
 A wordpress plugin, that enables us to show the states of the doors on our wordpress website.
+
+# contributors
+- [hoktaar](https://github.com/hoktaar)
+- [divramod](https://github.com/divramod)
+- [daccle](https://github.com/daccle)
