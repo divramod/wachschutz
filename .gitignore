@@ -1,2 +1,9 @@
-node_modules/
+# Dependency directories
+/node_modules/
+/typings/
+
+# vim
 .*.swp
+.*.*.swp
+.*.swo
+.*.*.swo
